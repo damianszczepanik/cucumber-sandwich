@@ -3,7 +3,7 @@
     <groupId>net.masterthought</groupId>
     <artifactId>cucumber-sandwich</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>cucumber-sandwich</name>
     <url>https://github.com/masterthought/cucumber-sandwich</url>
 
