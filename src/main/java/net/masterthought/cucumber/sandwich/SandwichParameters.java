@@ -10,6 +10,9 @@ public class SandwichParameters {
     @Parameter(names = "-o", required = true, description = "Output directory to generate the cucumber-html-reports into")
     private String outDir;
 
+    @Parameter(names = "-n", required = false, description = "run once without file change listener")
+    private Boolean withoutListener = false;
+
     public String getFolder(){
         return folder;
     }
@@ -18,4 +21,8 @@ public class SandwichParameters {
         return outDir;
     }
 
+
+    public Boolean getWithoutListener(){
+        return withoutListener;
+    }
 }

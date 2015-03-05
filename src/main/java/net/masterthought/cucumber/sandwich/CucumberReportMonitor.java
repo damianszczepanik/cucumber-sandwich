@@ -28,47 +28,51 @@ public class CucumberReportMonitor {
             cmd.parse(args);
             final File reportFolder = new File(params.getFolder());
             final File outputFolder = new File(params.getOutDir());
-//          final File reportFolder = new File("C:\\Users\\hendkin\\AppData\\Local\\dev\\fuse\\trunk\\fuse-acceptance\\report\\cucumber");
-//          final File outputFolder = new File("C:\\Users\\hendkin\\AppData\\Local\\dev\\fuse\\trunk\\fuse-acceptance\\report");
             createMonitorFolder(reportFolder);
 
             System.out.println("Starting Cucumber Sandwich.....");
-            System.out.println("Listening for change in folder: " + reportFolder.getAbsoluteFile());
-            FileAlterationObserver observer = new FileAlterationObserver(reportFolder);
-            FileAlterationMonitor monitor = new FileAlterationMonitor(pollingInterval);
-            FileAlterationListener listener = new FileAlterationListenerAdaptor() {
 
-                @Override
-                public void onFileCreate(File file) {
-                    try {
-                        System.out.println("File created: " + file.getCanonicalPath());
-                        generateReport(reportFolder, outputFolder);
-                    } catch (Exception e) {
-                        e.printStackTrace(System.err);
+            if (params.getWithoutListener()) {
+                System.out.println("Running once only as -n flag supplied.....");
+                generateReport(reportFolder, outputFolder);
+            } else {
+                System.out.println("Listening for change in folder: " + reportFolder.getAbsoluteFile());
+                FileAlterationObserver observer = new FileAlterationObserver(reportFolder);
+                FileAlterationMonitor monitor = new FileAlterationMonitor(pollingInterval);
+                FileAlterationListener listener = new FileAlterationListenerAdaptor() {
+
+                    @Override
+                    public void onFileCreate(File file) {
+                        try {
+                            System.out.println("File created: " + file.getCanonicalPath());
+                            generateReport(reportFolder, outputFolder);
+                        } catch (Exception e) {
+                            e.printStackTrace(System.err);
+                        }
                     }
-                }
 
-                @Override
-                public void onFileChange(File file) {
-                    try {
-                        System.out.println("File changed: " + file.getCanonicalPath());
-                        generateReport(reportFolder, outputFolder);
-                    } catch (IOException e) {
-                        e.printStackTrace(System.err);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    @Override
+                    public void onFileChange(File file) {
+                        try {
+                            System.out.println("File changed: " + file.getCanonicalPath());
+                            generateReport(reportFolder, outputFolder);
+                        } catch (IOException e) {
+                            e.printStackTrace(System.err);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-            };
+                };
 
-            observer.addListener(listener);
-            monitor.addObserver(observer);
-            monitor.start();
-
+                observer.addListener(listener);
+                monitor.addObserver(observer);
+                monitor.start();
+            }
         } catch (ParameterException ex) {
             System.out.println(ex.getMessage());
             cmd.usage();
         }
+
     }
 
     private static String[] findJsonFiles(File targetDirectory) {
