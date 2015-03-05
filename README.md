@@ -23,6 +23,16 @@ Use the cucumber-sandwich.jar like this:
 
 It's probably best to stick that in a .bat or .sh script for easy running. Also note there is no checking done to verify if the json files are cucumber ones and it picks up any json files in the input directory. So make sure you generate your cucumber.json files in a directory without other json files.
 
+You can also add an option -n flag to just run once instead of listening for changes:
+
+     java -jar cucumner-sandwich.jar -n -f path/to/the/folder/containing/json -o path/to/folder/to/generate/reports/into
+
+An example with real paths would be:
+
+     java -jar cucumber-sandwich.jar -f /home/kings/cucumber/json -o /home/kings/cucumber/reports -n
+
+
+
 You can specify where the cucumber.json goes in your runner e.g.
 
      import cucumber.junit.Cucumber;
