@@ -88,7 +88,7 @@ public class CucumberReportMonitor {
         List jsonFileList = findJsonReports(reportFolder);
 
         System.out.println("About to generate Cucumber Report into: " + rd.getAbsoluteFile());
-        ReportBuilder reportBuilder = new ReportBuilder(jsonFileList, rd, "", now(), "cucumber-jvm", false, false, true, false, false, "", false);
+        ReportBuilder reportBuilder = new ReportBuilder(jsonFileList, rd, "", now(), "cucumber-jvm", false, false, false, false, true, false, false, "", false, false);
         reportBuilder.generateReports();
         System.out.println("Finished generating Cucumber Report into: " + rd.getAbsoluteFile());
     }
