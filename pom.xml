@@ -1,13 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.masterthought</groupId>
     <artifactId>cucumber-sandwich</artifactId>
     <packaging>jar</packaging>
     <version>0.0.5-SNAPSHOT</version>
     <name>cucumber-sandwich</name>
-    <url>https://github.com/masterthought/cucumber-sandwich</url>
+    <url>https://github.com/damianszczepanik/cucumber-sandwich</url>
 
     <repositories>
+        <!-- used for com.googlecode.totallylazy -->
         <repository>
             <id>repo.bodar.com</id>
             <url>http://repo.bodar.com</url>
@@ -28,9 +30,9 @@
     </parent>
 
     <scm>
-        <connection>scm:git:git@github.com:masterthought/cucumber-sandwich.git</connection>
-        <developerConnection>scm:git:git@github.com:masterthought/cucumber-sandwich.git</developerConnection>
-        <url>git@github.com:masterthought/cucumber-sandwich.git</url>
+        <connection>scm:git:git@github.com:damianszczepanik/cucumber-sandwich.git</connection>
+        <developerConnection>scm:git:git@github.com:damianszczepanik/cucumber-sandwich.git</developerConnection>
+        <url>git@github.com:damianszczepanik/cucumber-sandwich.git</url>
     </scm>
 
     <description>
@@ -39,7 +41,6 @@
 
     <licenses>
         <license>
-            <comments>Use this project wherever you like</comments>
             <name>LGPL 2.1</name>
             <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
         </license>
@@ -50,9 +51,11 @@
             <id>kingsleyh</id>
             <name>Kingsley Hendrickse</name>
             <email>kingsley.hendrickse@gmail.com</email>
-            <timezone>GMT</timezone>
-            <roles>
-            </roles>
+        </developer>
+        <developer>
+            <id>damianszczepanik</id>
+            <name>Damian Szczepanik</name>
+            <email>damianszczepanik@github</email>
         </developer>
     </developers>
 
@@ -62,18 +65,16 @@
 
             <activation>
                 <property>
-                    <!--
-                                 will be set by the release plugin upon performing mvn
-                                 release:perform
-                             -->
+                    <!-- will be set by the release plugin upon performing 
+                        mvn clean deploy -Prelease-sign-artifacts -->
                     <name>performRelease</name>
                     <value>true</value>
                 </property>
             </activation>
 
             <properties>
-                <gpg.keyname>E91DA67C</gpg.keyname>
-                <release.username>kingsleyh</release.username>
+                <gpg.keyname>0738FA8F</gpg.keyname>
+                <release.username>Damian Szczepanik</release.username>
             </properties>
 
             <build>
@@ -105,10 +106,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.3</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -153,7 +154,7 @@
         <dependency>
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
-            <version>1.25</version>
+            <version>1.48</version>
         </dependency>
 
     </dependencies>
