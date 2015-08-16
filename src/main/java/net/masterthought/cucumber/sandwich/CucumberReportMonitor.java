@@ -77,7 +77,7 @@ public class CucumberReportMonitor {
 
     private static String[] findJsonFiles(File targetDirectory) {
         DirectoryScanner scanner = new DirectoryScanner();
-        scanner.setIncludes(new String[]{"**/*.json"});
+        scanner.setIncludes(new String[] {"**/*.json"});
         scanner.setBasedir(targetDirectory);
         scanner.scan();
         return scanner.getIncludedFiles();
@@ -85,7 +85,7 @@ public class CucumberReportMonitor {
 
     private static void generateReport(File reportFolder, File outputFolder) throws Exception {
         File rd = new File(outputFolder + "/cucumber-html-reports");
-        List jsonFileList = findJsonReports(reportFolder);
+        List<String> jsonFileList = findJsonReports(reportFolder);
 
         System.out.println("About to generate Cucumber Report into: " + rd.getAbsoluteFile());
         ReportBuilder reportBuilder = new ReportBuilder(jsonFileList, rd, "", now(), "cucumber-jvm", false, false, false, false, true, false, false, "", false, false);
@@ -93,9 +93,9 @@ public class CucumberReportMonitor {
         System.out.println("Finished generating Cucumber Report into: " + rd.getAbsoluteFile());
     }
 
-    private static List findJsonReports(File reportFolder) {
+    private static List<String> findJsonReports(File reportFolder) {
         String[] jsonFiles = findJsonFiles(reportFolder);
-        List reports = new ArrayList();
+        List<String> reports = new ArrayList<>();
 
         System.out.println("Found json reports: " + jsonFiles.length);
         String reportPath = reportFolder.getAbsolutePath();

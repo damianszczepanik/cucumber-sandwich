@@ -13,16 +13,16 @@ public class SandwichParameters {
     @Parameter(names = "-n", required = false, description = "run once without file change listener")
     private Boolean withoutListener = false;
 
-    public String getFolder(){
+    public String getFolder() {
         return folder;
     }
 
-    public String getOutDir(){
+    public String getOutDir() {
         return outDir;
     }
 
 
-    public Boolean getWithoutListener(){
+    public Boolean getWithoutListener() {
         return withoutListener;
     }
 }

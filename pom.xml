@@ -8,14 +8,6 @@
     <name>cucumber-sandwich</name>
     <url>https://github.com/damianszczepanik/cucumber-sandwich</url>
 
-    <repositories>
-        <!-- used for com.googlecode.totallylazy -->
-        <repository>
-            <id>repo.bodar.com</id>
-            <url>http://repo.bodar.com</url>
-        </repository>
-    </repositories>
-
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -108,8 +100,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -143,12 +135,6 @@
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>0.2.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.googlecode.totallylazy</groupId>
-            <artifactId>totallylazy</artifactId>
-            <version>1.20</version>
         </dependency>
 
         <dependency>
