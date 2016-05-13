@@ -28,7 +28,7 @@ It's probably best to stick that in a .bat or .sh script for easy running. Also 
 
 You can also add an option -n flag to just run once instead of listening for changes:
 
-     java -jar cucumner-sandwich.jar -n -f path/to/the/folder/containing/json -o path/to/folder/to/generate/reports/into
+     java -jar cucumber-sandwich.jar -n -f path/to/the/folder/containing/json -o path/to/folder/to/generate/reports/into
 
 An example with real paths would be:
 
