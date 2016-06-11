@@ -1,20 +1,23 @@
 package net.masterthought.cucumber.sandwich;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
-import net.masterthought.cucumber.ReportBuilder;
-import org.apache.commons.io.monitor.FileAlterationListener;
-import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
-import org.apache.commons.io.monitor.FileAlterationMonitor;
-import org.apache.commons.io.monitor.FileAlterationObserver;
-import org.codehaus.plexus.util.DirectoryScanner;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import org.apache.commons.io.monitor.FileAlterationListener;
+import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
+import org.apache.commons.io.monitor.FileAlterationMonitor;
+import org.apache.commons.io.monitor.FileAlterationObserver;
+import org.codehaus.plexus.util.DirectoryScanner;
+
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+
+import net.masterthought.cucumber.Configuration;
+import net.masterthought.cucumber.ReportBuilder;
 
 public class CucumberReportMonitor {
 
@@ -88,7 +91,19 @@ public class CucumberReportMonitor {
         List<String> jsonFileList = findJsonReports(reportFolder);
 
         System.out.println("About to generate Cucumber Report into: " + rd.getAbsoluteFile());
-        ReportBuilder reportBuilder = new ReportBuilder(jsonFileList, rd, "", now(), "cucumber-jvm", false, false, false, false, true, false, false, "", false, false);
+
+        boolean skippedFailsBuild = true;
+        boolean pendingFailsBuild = false;
+        boolean undefinedFailsBuild = false;
+        boolean missingFailsBuild = true;
+        boolean runWithJenkins = false;
+        boolean parallelTesting = false;
+        Configuration configuration = new Configuration(rd, "cucumber-jvm");
+        configuration.setStatusFlags(skippedFailsBuild, pendingFailsBuild, undefinedFailsBuild, missingFailsBuild);
+        configuration.setParallelTesting(parallelTesting);
+        configuration.setRunWithJenkins(runWithJenkins);
+
+        ReportBuilder reportBuilder = new ReportBuilder(jsonFileList, configuration);
         reportBuilder.generateReports();
         System.out.println("Finished generating Cucumber Report into: " + rd.getAbsoluteFile());
     }
