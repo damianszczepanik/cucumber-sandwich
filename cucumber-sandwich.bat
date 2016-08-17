@@ -1,1 +1,0 @@
-java -jar cucumber-sandwich.jar -f C:\Users\hendkin\AppData\Local\dev\fuse\trunk\fuse-acceptance\report\cucumber -o C:\Users\hendkin\AppData\Local\dev\fuse\trunk\fuse-acceptance\report

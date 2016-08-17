@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
 import org.codehaus.plexus.util.DirectoryScanner;
-
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
@@ -95,11 +94,10 @@ public class CucumberReportMonitor {
         boolean skippedFailsBuild = true;
         boolean pendingFailsBuild = false;
         boolean undefinedFailsBuild = false;
-        boolean missingFailsBuild = true;
         boolean runWithJenkins = false;
         boolean parallelTesting = false;
         Configuration configuration = new Configuration(rd, "cucumber-jvm");
-        configuration.setStatusFlags(skippedFailsBuild, pendingFailsBuild, undefinedFailsBuild, missingFailsBuild);
+        configuration.setStatusFlags(skippedFailsBuild, pendingFailsBuild, undefinedFailsBuild);
         configuration.setParallelTesting(parallelTesting);
         configuration.setRunWithJenkins(runWithJenkins);
 
