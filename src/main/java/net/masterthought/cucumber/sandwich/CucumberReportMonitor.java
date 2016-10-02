@@ -2,9 +2,7 @@ package net.masterthought.cucumber.sandwich;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import com.beust.jcommander.JCommander;
@@ -91,15 +89,7 @@ public class CucumberReportMonitor {
 
         System.out.println("About to generate Cucumber Report into: " + rd.getAbsoluteFile());
 
-        boolean skippedFailsBuild = true;
-        boolean pendingFailsBuild = false;
-        boolean undefinedFailsBuild = false;
-        boolean runWithJenkins = false;
-        boolean parallelTesting = false;
         Configuration configuration = new Configuration(rd, "cucumber-jvm");
-        configuration.setStatusFlags(skippedFailsBuild, pendingFailsBuild, undefinedFailsBuild);
-        configuration.setParallelTesting(parallelTesting);
-        configuration.setRunWithJenkins(runWithJenkins);
 
         ReportBuilder reportBuilder = new ReportBuilder(jsonFileList, configuration);
         reportBuilder.generateReports();
@@ -129,13 +119,4 @@ public class CucumberReportMonitor {
             }
         }
     }
-
-    public static String now() {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return sdf.format(cal.getTime());
-
-    }
-
-
 }
