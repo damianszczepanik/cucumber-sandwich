@@ -68,7 +68,7 @@
             <activation>
                 <property>
                     <!-- will be set by the release plugin upon performing 
-                         release:clean release:prepare release:perform -->
+                         mvn release:clean release:prepare release:perform -->
                     <name>performRelease</name>
                     <value>true</value>
                 </property>
@@ -170,7 +170,7 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>3.2.0</version>
+            <version>3.3.0</version>
         </dependency>
 
         <dependency>
