@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
@@ -17,6 +18,9 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 
 public class CucumberReportMonitor {
+
+    private static String jsonFilePattern = "**/*.json";
+    private static String classificationFilePattern = "**/*.properties";
 
     public static void main(String[] args) throws Exception {
 
@@ -75,39 +79,40 @@ public class CucumberReportMonitor {
 
     }
 
-    private static String[] findJsonFiles(File targetDirectory) {
+    private static List<String> genericFindFiles(File targetDirectory, String fileIncludePattern) {
         DirectoryScanner scanner = new DirectoryScanner();
-        scanner.setIncludes(new String[] {"**/*.json"});
+        scanner.setIncludes(new String[] {fileIncludePattern});
         scanner.setBasedir(targetDirectory);
         scanner.scan();
-        return scanner.getIncludedFiles();
+        String[] files = scanner.getIncludedFiles();
+        return fullPathToFiles(files, targetDirectory);
     }
 
-    private static void generateReport(File reportFolder, File outputFolder) throws Exception {
-        File rd = new File(outputFolder + "/cucumber-html-reports");
-        List<String> jsonFileList = findJsonReports(reportFolder);
+    private static List<String> fullPathToFiles(String[] files, File targetDirectory) {
+        List<String> fullPathList = new ArrayList<>();
+        for (String file : files) {
+            fullPathList.add(new File(targetDirectory, file).getAbsolutePath());
+        }
+        return fullPathList;
+    }
+
+    private static void generateReport(File reportFolder, File outputFolder) {
+        File rd = new File(outputFolder.toString() );
+        List<String> jsonFileList = genericFindFiles(reportFolder,jsonFilePattern);
+
+        List<String> classificationFileList = genericFindFiles(reportFolder,classificationFilePattern);
 
         System.out.println("About to generate Cucumber Report into: " + rd.getAbsoluteFile());
 
         Configuration configuration = new Configuration(rd, "cucumber-jvm");
 
+        if(CollectionUtils.isNotEmpty(classificationFileList)) {
+            configuration.addClassificationFiles(classificationFileList);
+        }
+
         ReportBuilder reportBuilder = new ReportBuilder(jsonFileList, configuration);
         reportBuilder.generateReports();
         System.out.println("Finished generating Cucumber Report into: " + rd.getAbsoluteFile());
-    }
-
-    private static List<String> findJsonReports(File reportFolder) {
-        String[] jsonFiles = findJsonFiles(reportFolder);
-        List<String> reports = new ArrayList<>();
-
-        System.out.println("Found json reports: " + jsonFiles.length);
-        String reportPath = reportFolder.getAbsolutePath();
-        for (int i = 0; i < jsonFiles.length; i++) {
-            String reportJson = reportPath + "/" + jsonFiles[i];
-            System.out.println(reportJson);
-            reports.add(reportJson);
-        }
-        return reports;
     }
 
     private static void createMonitorFolder(File reportFolder) {

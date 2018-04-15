@@ -4,7 +4,7 @@
 
 # Generate Pretty HTML Reports For Cucumber On The Fly
 
-This project generates pretty cucumber html reports on the fly. It monitors your cucumber json report directory for change and then publishes a new report if your report json files change.
+This project generates pretty cucumber html reports on the fly. It monitors your cucumber output report directory for change and then publishes a new report if your report json or classification files change.
 
 ## Background
 
@@ -22,17 +22,17 @@ rename this file to cucumber-sandwich.jar
 
 Use the cucumber-sandwich.jar like this:
 
-    java -jar cucumber-sandwich.jar -f path/to/the/folder/containing/cucumber.json -o /path/to/generate/html/reports/into
+    java -jar cucumber-sandwich.jar -f path/to/the/folder/containing/json/and/classification -o /path/to/folder/to/generate/html/reports/into
 
-It's probably best to stick that in a .bat or .sh script for easy running. Also note there is no checking done to verify if the json files are cucumber ones and it picks up any json files in the input directory. So make sure you generate your cucumber.json files in a directory without other json files.
+It's probably best to stick that in a .bat or .sh script for easy running. Also note there is no checking done to verify if the json files are cucumber ones and it picks up any json files in the input directory. So make sure you generate your cucumber.json files in a directory without other json files. The same applies to classification files in that the content of those property files are not validated for a list of key/value pairings.
 
 You can also add an option -n flag to just run once instead of listening for changes:
 
-     java -jar cucumber-sandwich.jar -n -f path/to/the/folder/containing/json -o path/to/folder/to/generate/reports/into
+     java -jar cucumber-sandwich.jar -n -f path/to/the/folder/containing/json/and/classification -o /path/to/folder/to/generate/html/reports/into
 
 An example with real paths would be:
 
-     java -jar cucumber-sandwich.jar -f /home/kings/cucumber/json -o /home/kings/cucumber/reports -n
+     java -jar cucumber-sandwich.jar -f /home/kings/cucumber/output -o /home/kings/cucumber/reports -n
 
 
 
