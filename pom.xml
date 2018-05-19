@@ -166,18 +166,15 @@
     </build>
 
     <dependencies>
-
-        <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>cucumber-reporting</artifactId>
-            <version>3.16.0</version>
-        </dependency>
-
         <dependency>
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
             <version>1.58</version>
         </dependency>
-
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>3.17.1</version>
+        </dependency>
     </dependencies>
 </project>
