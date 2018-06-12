@@ -42,7 +42,7 @@ You can specify where the cucumber.json goes in your runner e.g.
      import org.junit.runner.RunWith;
 
      @RunWith(Cucumber.class)
-     @Cucumber.Options(format = {"json:path/to/cucumber.json"})
+     @CucumberOptions(plugin = {"json:path/to/cucumber.json"})
      public class SomeTest {
      }
 
