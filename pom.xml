@@ -152,7 +152,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>3.1.1</version>
+				<!-- https://github.com/joel-costigliola/assertj-core/pull/1520 -->
+                <configuration>
+                  <source>8</source>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
