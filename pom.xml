@@ -12,6 +12,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
+
+        <jcommander.version>1.78</jcommander.version>
     </properties>
 
     <parent>
@@ -173,12 +175,12 @@
         <dependency>
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
-            <version>1.78</version>
+            <version>${jcommander.version}</version>
         </dependency>
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-           <version>5.6.0</version>
+           <version>5.6.1</version>
         </dependency>
     </dependencies>
 </project>
