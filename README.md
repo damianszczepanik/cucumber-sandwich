@@ -1,4 +1,5 @@
-[![Build Status](https://img.shields.io/travis/damianszczepanik/cucumber-sandwich/master.svg)](https://travis-ci.org/damianszczepanik/cucumber-sandwich)
+[![Github build](https://github.com/damianszczepanik/cucumber-sandwich/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/damianszczepanik/cucumber-sandwich/actions/workflows/build.yml)
+
 [![Maven Central](https://img.shields.io/maven-central/v/net.masterthought/cucumber-sandwich.svg)](http://search.maven.org/#search|gav|1|g%3A%22net.masterthought%22%20AND%20a%3A%22cucumber-sandwich%22)
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-blue.svg)](http://damianszczepanik.github.io/cucumber-html-reports/overview-features.html)
