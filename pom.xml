@@ -13,7 +13,7 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
 
-        <jcommander.version>1.78</jcommander.version>
+        <jcommander.version>1.82</jcommander.version>
     </properties>
 
     <parent>
