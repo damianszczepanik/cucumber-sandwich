@@ -2,7 +2,7 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/net.masterthought/cucumber-sandwich.svg)](http://search.maven.org/#search|gav|1|g%3A%22net.masterthought%22%20AND%20a%3A%22cucumber-sandwich%22)
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-blue.svg)](http://damianszczepanik.github.io/cucumber-html-reports/overview-features.html)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-blue.svg)](https://damianszczepanik.github.io/cucumber-html-reports/overview-features.html)
 
 # Generate Pretty HTML Reports For Cucumber On The Fly
 
