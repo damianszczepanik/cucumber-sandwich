@@ -38,6 +38,10 @@
         <developerConnection>scm:git:git@github.com:damianszczepanik/cucumber-sandwich.git</developerConnection>
         <url>git@github.com:damianszczepanik/cucumber-sandwich.git</url>
     </scm>
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/damianszczepanik/cucumber-sandwich/actions</url>
+    </ciManagement>
 
     <description>
         This project displays a report locally
