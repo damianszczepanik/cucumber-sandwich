@@ -25,7 +25,7 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:damianszczepanik/cucumber-sandwich.git</connection>
+        <connection>scm:git:https://github.com/damianszczepanik/cucumber-sandwich.git</connection>
         <developerConnection>scm:git:git@github.com:damianszczepanik/cucumber-sandwich.git</developerConnection>
         <url>git@github.com:damianszczepanik/cucumber-sandwich.git</url>
     </scm>
