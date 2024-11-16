@@ -2,6 +2,9 @@ package net.masterthought.cucumber.sandwich;
 
 import com.beust.jcommander.Parameter;
 
+/**
+ * Collects parameters for the report generation.
+ */
 public class SandwichParameters {
 
     @Parameter(names = "-f", required = true, description = "Folder to monitor for cucumber.json report files")
@@ -17,11 +20,17 @@ public class SandwichParameters {
         return folder;
     }
 
+    /**
+     * Returns output directory.
+     */
     public String getOutDir() {
         return outDir;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Boolean getWithoutListener() {
         return withoutListener;
     }
