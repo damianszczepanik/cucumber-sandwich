@@ -3,7 +3,9 @@ package net.masterthought.cucumber.sandwich;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
@@ -11,7 +13,6 @@ import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
-import org.codehaus.plexus.util.DirectoryScanner;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
@@ -75,12 +76,10 @@ public class CucumberReportMonitor {
 
     }
 
-    private static String[] findJsonFiles(File targetDirectory) {
-        DirectoryScanner scanner = new DirectoryScanner();
-        scanner.setIncludes(new String[] {"**/*.json"});
-        scanner.setBasedir(targetDirectory);
-        scanner.scan();
-        return scanner.getIncludedFiles();
+    private static List findJsonFiles(File targetDirectory) {
+        File[] files = targetDirectory.listFiles(file -> file.isFile());
+
+        return Arrays.stream(files).map(File::getName).collect(Collectors.toList());
     }
 
     private static void generateReport(File reportFolder, File outputFolder) throws Exception {
@@ -97,13 +96,13 @@ public class CucumberReportMonitor {
     }
 
     private static List<String> findJsonReports(File reportFolder) {
-        String[] jsonFiles = findJsonFiles(reportFolder);
+        List<String> jsonFiles = findJsonFiles(reportFolder);
         List<String> reports = new ArrayList<>();
 
-        System.out.println("Found json reports: " + jsonFiles.length);
+        System.out.println("Found json reports: " + jsonFiles.size());
         String reportPath = reportFolder.getAbsolutePath();
-        for (int i = 0; i < jsonFiles.length; i++) {
-            String reportJson = reportPath + "/" + jsonFiles[i];
+        for (String file : jsonFiles) {
+            String reportJson = reportPath + "/" + file;
             System.out.println(reportJson);
             reports.add(reportJson);
         }
