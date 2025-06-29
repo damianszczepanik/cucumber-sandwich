@@ -17,8 +17,14 @@ import org.apache.commons.io.monitor.FileAlterationObserver;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 
+/**
+ * Main class for the report generation.
+ */
 public class CucumberReportMonitor {
 
+    /**
+     * Entry method for the report generation.
+     */
     public static void main(String[] args) throws Exception {
 
         SandwichParameters params = new SandwichParameters();
@@ -82,7 +88,7 @@ public class CucumberReportMonitor {
         return Arrays.stream(files).map(File::getName).collect(Collectors.toList());
     }
 
-    private static void generateReport(File reportFolder, File outputFolder) throws Exception {
+    private static void generateReport(File reportFolder, File outputFolder) {
         File rd = new File(outputFolder + "/cucumber-html-reports");
         List<String> jsonFileList = findJsonReports(reportFolder);
 
