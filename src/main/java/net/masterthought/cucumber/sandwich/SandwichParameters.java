@@ -27,10 +27,6 @@ public class SandwichParameters {
         return outDir;
     }
 
-    /**
-     *
-     * @return
-     */
     public Boolean getWithoutListener() {
         return withoutListener;
     }
